@@ -20,9 +20,11 @@ namespace toe_tak_tic
             {
                 Console.WriteLine($"Sorry, {winner.Name}");
                 Console.ReadLine();
+                Environment.Exit(1);
             }
             Console.WriteLine($"Congrats {newGame.Play().Name}! You WON!");
             Console.ReadLine();
+            Environment.Exit(1);
         }
     }
 }

@@ -38,6 +38,7 @@ namespace Lab04_TicTacToe.Classes
             while (CheckForWinner(Board) == false && turnCount < 11)
             {
                 turnCount++;
+                Console.WriteLine($"The turn count is {turnCount}");
                 string nextTurn = "0";
                 if (PlayerOne.IsTurn == true)
                 {
