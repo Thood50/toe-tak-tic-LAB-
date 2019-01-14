@@ -3,7 +3,7 @@ using Lab04_TicTacToe.Classes;
 
 namespace toe_tak_tic
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
