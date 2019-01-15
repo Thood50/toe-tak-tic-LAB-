@@ -11,18 +11,26 @@ namespace XUnitTestProject1
         [Fact]
         public void TestForLoser()
         {
-            Board testBoard = new Board();
-            Assert.False(Game.CheckForWinner(testBoard));
+            Player playerOne = new Player();
+            Player playerTwo = new Player();
+            Board Board = new Board();
+            Game testGame = new Game(playerOne, playerTwo);            
+            bool isFalse = CheckForWinner(testGame.Board)
+            Assert.False(isFalse);
         }
 
         [Fact]
         public void TestForWinner()
         {
-            Board testBoard = new Board();
-            testBoard.GameBoard[0, 0] = "X";
-            testBoard.GameBoard[0, 1] = "X";
-            testBoard.GameBoard[0, 2] = "X";
-            Assert.True(Game.CheckForWinner(testBoard));
+            Player playerOne = new Player();
+            Player playerTwo = new Player();
+            Board Board = new Board();
+            Game testGame = new Game(playerOne, playerTwo);
+            testGame.Board.GameBoard[0, 0] = "X";
+            testGame.Board.GameBoard[0, 1] = "X";
+            testGame.Board.GameBoard[0, 2] = "X";
+            bool isTrue = CheckForWinner(testGame.Board)
+            Assert.True(isTrue);
         }
         
     }
