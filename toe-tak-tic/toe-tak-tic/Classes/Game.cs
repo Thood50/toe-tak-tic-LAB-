@@ -33,51 +33,28 @@ namespace Lab04_TicTacToe.Classes
             Player Draw = new Player();
             Draw.Name = "Its a draw!";
             int turnCount = -1;
+            PlayerOne.Marker = "X";
+            PlayerTwo.Marker = "O";
             
             
-            while (CheckForWinner(Board) == false && turnCount < 11)
+            while (CheckForWinner(Board) == false)
             {
-                turnCount++;
-                Console.WriteLine($"The turn count is {turnCount}");
-                string nextTurn = "0";
+                turnCount++;                
                 if (PlayerOne.IsTurn == true)
                 {
-                    Console.WriteLine($"Okay {PlayerOne.Name}, your turn");
-                    nextTurn = Console.ReadLine();
+                    PlayerOne.TakeTurn(Board);
 
                 }
                 if (PlayerTwo.IsTurn == true)
                 {
-                    Console.WriteLine($"Okay {PlayerTwo.Name}, your turn");
-                    nextTurn = Console.ReadLine();
-                }
-
-                int rows = Board.GameBoard.GetLength(0);
-                int cols = Board.GameBoard.GetLength(1);
-                for (int i = 0; i < rows; i++)
-                {
-                    for (int k = 0; k < cols; k++)
-                    {
-                        if (nextTurn == Board.GameBoard[i, k])
-                        {
-                            if (PlayerOne.IsTurn == true)
-                            {
-                                Board.GameBoard[i, k] = "X";
-                            }
-                            if (PlayerTwo.IsTurn == true)
-                            {
-                                Board.GameBoard[i, k] = "O";
-                            }
-                        }
-                    }
-                }
+                    PlayerTwo.TakeTurn(Board);
+                }                
                 Board.DisplayBoard();
-                if (turnCount == 10)
+                if (turnCount == 9 && CheckForWinner(Board) == false)
                 {
                     Winner = Draw;
                     return Winner;
                 }
-
                 SwitchPlayer();
                 NextPlayer();               
             }
