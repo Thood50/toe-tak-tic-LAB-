@@ -14,8 +14,8 @@ namespace XUnitTestProject1
             Player playerOne = new Player();
             Player playerTwo = new Player();
             Board Board = new Board();
-            Game testGame = new Game(playerOne, playerTwo);            
-            bool isFalse = CheckForWinner(testGame.Board)
+            Game testGame = new Game(playerOne, playerTwo);
+            bool isFalse = testGame.CheckForWinner(testGame.Board);
             Assert.False(isFalse);
         }
 
@@ -29,9 +29,30 @@ namespace XUnitTestProject1
             testGame.Board.GameBoard[0, 0] = "X";
             testGame.Board.GameBoard[0, 1] = "X";
             testGame.Board.GameBoard[0, 2] = "X";
-            bool isTrue = CheckForWinner(testGame.Board)
+            bool isTrue = testGame.CheckForWinner(testGame.Board);
             Assert.True(isTrue);
         }
-        
+
+        [Fact]
+        public void TestForPlayerOne()
+        {
+            Player PlayerOne = new Player();
+            Player PlayerTwo = new Player();            
+            Board Board = new Board();
+            Game testGame = new Game(PlayerOne, PlayerTwo);
+            Assert.IsType<Player>(testGame.NextPlayer());
+        }
+
+        [Fact]
+        public void TestForPlayerTwo()
+        {
+            Player PlayerOne = new Player();
+            Player PlayerTwo = new Player();
+            Board Board = new Board();
+            Game testGame = new Game(PlayerOne, PlayerTwo);
+            testGame.SwitchPlayer();
+            Assert.IsType<Player>(testGame.NextPlayer());
+        }
+
     }
 }
