@@ -34,7 +34,7 @@ namespace XUnitTestProject1
         }
 
         [Fact]
-        public void TestForPlayerOne()
+        public void TestForPlayerTurn()
         {
             Player PlayerOne = new Player();
             Player PlayerTwo = new Player();            
@@ -44,7 +44,7 @@ namespace XUnitTestProject1
         }
 
         [Fact]
-        public void TestForPlayerTwo()
+        public void TestForSwitchOfPlayerTurn()
         {
             Player PlayerOne = new Player();
             Player PlayerTwo = new Player();
@@ -52,6 +52,26 @@ namespace XUnitTestProject1
             Game testGame = new Game(PlayerOne, PlayerTwo);
             testGame.SwitchPlayer();
             Assert.IsType<Player>(testGame.NextPlayer());
+        }
+
+        [Theory]
+        [InlineData(2)]
+        [InlineData(4)]
+        [InlineData(5)]
+        [InlineData(9)]
+        public void TestForValidPosition(int num)
+        {                     
+            Assert.IsType<Position>(Player.PositionForNumber(num));
+        }
+
+        [Theory]
+        [InlineData(0)]
+        [InlineData(10)]
+        [InlineData(100)]
+        [InlineData(1000)]
+        public void TestForNullPosition(int num)
+        {
+            Assert.Null(Player.PositionForNumber(num));
         }
 
     }
